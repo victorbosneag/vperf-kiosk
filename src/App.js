@@ -1,16 +1,15 @@
 import './App.css';
 import QrScanner from './pages/QrScanner';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import LandingPage from './pages/LandingPage';
-import ConfigPage from './pages/ConfigPage';
+import MainPages from './pages/MainPages';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<LandingPage />} />
-        <Route path="config" element={<ConfigPage />} />
         <Route path="scan" element={<QrScanner />} />
+        <Route path="/*" element={<MainPages />} />
+        
       </Routes>
     </BrowserRouter>
   );
