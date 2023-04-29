@@ -1,6 +1,6 @@
 const routes = {
-    authCheck: "/admin/ok"
-    
+    authCheck: "/admin/ok",
+    submitAnswer: "/admin/team"    
 }
 
 export default routes;
