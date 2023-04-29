@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import QrScanner from "react-qr-scanner";
 import {
   AnswerArange,
@@ -13,13 +13,22 @@ import {
 } from "./QRScanner.style";
 import Select from "react-dropdown-select";
 import { digitOptions, problemOptions } from "./QRScanner.config";
+import { submitAnswer } from "../api/submitAnswer.api";
+import { useNavigate } from "react-router-dom";
 
 function QrScannerPage() {
+  const navigate = useNavigate()
+  useEffect(()=>{
+    const password = localStorage.getItem("pass");
+    if(!password){
+      navigate("/config");
+    }
+  },[])
   const previewStyle = {
     height: 240,
     width: 320,
   }
-  const [team, setTeam] = useState("NOQR");
+  const [team, setTeam] = useState({id:100, name:"NOQR"});
   let problem = { value: 100 };
   let answer = [{ value: 100 }, { value: 100 }, { value: 100 }, { value: 100 }];
   const setNewTeam = (teamName) => {
@@ -34,12 +43,12 @@ function QrScannerPage() {
       try {
         const teamObject = JSON.parse(scannedTeamName);
         if (!teamObject.id) {
-          setNewTeam("INVALIDQR");
+          setNewTeam({id:100, name:"INVALIDQR"});
         } else {
-          setNewTeam(teamObject.name);
+          setNewTeam({id: teamObject.id, name:teamObject.name});
         }
       } catch (err) {
-        setNewTeam("INVALIDQR");
+        setNewTeam({id:100, name:"INVALIDQR"});
       }
     }
   };
@@ -47,7 +56,18 @@ function QrScannerPage() {
     console.log(err);
   };
   const handleSubmit = async (event) => {
-    console.log(problem);
+    if(problem.value<1&&problem.value>20){
+      alert("Problema data nu exista");
+      window.location.reload();
+    }
+    const answerValue = answer.map((element)=>{
+      return ''+element.value;
+    }).join('');
+
+    console.log(answerValue)
+    const password = localStorage.getItem("pass")
+    const response = await submitAnswer(password, team.id, problem.value, answerValue);
+    console.log(response)
     //window.location.reload();
   };
   const preventDefault = (event) => {
@@ -73,11 +93,11 @@ function QrScannerPage() {
         <QrScanner style={previewStyle} delay={10000} onError={handleError} onScan={handleScan}/>
 
         <h1>
-          {team === "NOQR"
+          {team.name === "NOQR"
             ? "Niciun QR scanat"
-            : team === "INVALIDQR"
+            : team.name === "INVALIDQR"
             ? "QR invalid! Incercati din nou"
-            : team}
+            : team.name}
         </h1>
 
         <StyledForm onSubmit={preventDefault}>
