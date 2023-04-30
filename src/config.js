@@ -1,1 +1,1 @@
-export const API_URL = "http://192.168.0.152:1031"
+export const API_URL = "https://serverproxy.home.arpa:9443"
