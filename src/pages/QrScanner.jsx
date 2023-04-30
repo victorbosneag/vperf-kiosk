@@ -47,6 +47,9 @@ function QrScannerPage() {
   const handleScan = (data) => {
     if (data) {
       const scannedTeamName = data.text;
+      if(scannedTeamName==="CLEAR"){
+        window.location.reload();
+      }
       console.log(scannedTeamName);
       try {
         const teamObject = JSON.parse(scannedTeamName);
