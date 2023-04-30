@@ -9,7 +9,6 @@ export const submitAnswer = async (password, teamId, problemId, answer) => {
   url = baseUrl + "/" + teamId + "/submit/" + problemId;
   headers.append("Authorization", basicAuth);
   headers.append("Content-Type", "text/plain;charset=UTF-8")
-  headers.append("Access-Control-Allow-Origin", "*");
   try {
     const response = await fetch(url, {
       method: "POST",

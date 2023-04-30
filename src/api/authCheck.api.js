@@ -7,7 +7,6 @@ export const authCheck = async (password) => {
   const basicAuth = "Basic " + btoa("admin:" + password);
   let headers = new Headers();
   headers.append("Authorization", basicAuth);
-  //headers.append("Access-Control-Allow-Origin", "*");
   try {
     const response = fetch(url, {
       method: "GET",
