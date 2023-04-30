@@ -11,13 +11,14 @@ function ConfigPage() {
     const response = await authCheck(value["adminPass"]);
     if(response){
       localStorage.setItem('pass', value["adminPass"])
+      alert("Parola a fost salvata");
     }
     else{
       alert("Parola introdusa nu este corecta!")
     }
   }
   return (
-    <CustomForm formData={formData} title={"Test"} submitFunction={handleSubmit} buttonText={"Test"}/>
+    <CustomForm formData={formData} title={"Configurare client"} submitFunction={handleSubmit} buttonText={"OK"}/>
   )
 }
 
