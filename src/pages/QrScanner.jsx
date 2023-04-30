@@ -66,7 +66,7 @@ function QrScannerPage() {
 
     console.log(answerValue)
     const password = localStorage.getItem("pass")
-    const response = await submitAnswer(password, team.id, problem.value, answerValue);
+    const response = await submitAnswer(password, team.id, problem.value-1, answerValue);
     if(response){
       alert("Solutie inregistrata!");
     }
