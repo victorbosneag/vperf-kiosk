@@ -54,12 +54,12 @@ function QrScannerPage() {
       try {
         const teamObject = JSON.parse(scannedTeamName);
         if (!teamObject.id) {
-          setNewTeam({ id: 100, name: "INVALIDQR" });
+          setNewTeam({ id: 101, name: "INVALIDQR" });
         } else {
-          setNewTeam({ id: teamObject.id, name: teamObject.name });
+          setNewTeam({ id: teamObject.id-1, name: teamObject.name });
         }
       } catch (err) {
-        setNewTeam({ id: 100, name: "INVALIDQR" });
+        setNewTeam({ id: 101, name: "INVALIDQR" });
       }
     }
   };
