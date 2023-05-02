@@ -5,8 +5,9 @@ export const PageContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: calc(100vh - 80px);
   width: 100%;
-  padding-top: 50px;
+  background-image: url("http://localhost:3000/wall.png")
 `;
 
 export const Header = styled.nav`
