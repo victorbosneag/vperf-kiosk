@@ -1,3 +1,4 @@
+import Select from "react-dropdown-select";
 import styled from "styled-components";
 
 export const PageContainer = styled.div`
@@ -5,7 +6,8 @@ export const PageContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: calc(100vh - 80px);
+  //height: calc(100vh - 80px);
+  height:100vh;
   width: 100%;
   background-image: url("http://localhost:3000/wall.png")
 `;
@@ -36,22 +38,25 @@ export const ButtonContainer = styled.div`
 
 export const StyledButton = styled.button`
   display: flex;
+  margin: 1em;
   border-radius: 15px;
-  width: 130px;
-  height: 50px;
+  width: 8em;
+  height: 2.5em;
   text-align: center;
-  background-color: blue;
+  background-color: #475574;
   justify-content: center;
   align-items: center;
   color: white;
   margin: 40px;
-  font-size: x-large;
+  font-size: 1.5em;
+  border:none;
+  padding:.5em;
 `;
 
 export const StyledLabel = styled.label`
   font-size: x-large;
   margin-bottom: 15px;
-  color: blue;
+  color: lightblue;
 `;
 
 export const FormGroup = styled.div`
@@ -73,4 +78,12 @@ export const ScannerContainer = styled.div`
   display:flex;
   width:100%
   height:100px;
+`;
+
+export const TeamName = styled.h1`
+  color: #FFA500
+`;
+
+export const CustomSelect = styled(Select)`
+  background-color: white;
 `;
