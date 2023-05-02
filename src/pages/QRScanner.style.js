@@ -7,9 +7,9 @@ export const PageContainer = styled.div`
   align-items: center;
   flex-direction: column;
   //height: calc(100vh - 80px);
-  height:100vh;
+  height: 100vh;
   width: 100%;
-  background-image: url("http://localhost:3000/wall.png")
+  background-image: url("http://localhost:3000/wall.png");
 `;
 
 export const Header = styled.nav`
@@ -49,8 +49,8 @@ export const StyledButton = styled.button`
   color: white;
   margin: 40px;
   font-size: 1.5em;
-  border:none;
-  padding:.5em;
+  border: none;
+  padding: 0.5em;
 `;
 
 export const StyledLabel = styled.label`
@@ -65,13 +65,13 @@ export const FormGroup = styled.div`
 
 export const AnswerContainer = styled.div`
   display: flex;
-  width: 100%
+  width: 100%;
 `;
 
 export const AnswerArange = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100%
+  width: 100%;
 `;
 
 export const ScannerContainer = styled.div`
@@ -81,9 +81,14 @@ export const ScannerContainer = styled.div`
 `;
 
 export const TeamName = styled.h1`
-  color: #FFA500
+  color: #ffa500;
 `;
 
 export const CustomSelect = styled(Select)`
   background-color: white;
+`;
+
+export const ScannerWrapper = styled.div`
+  border-radius: 15px;
+  overflow: hidden;
 `;

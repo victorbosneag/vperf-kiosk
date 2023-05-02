@@ -6,8 +6,8 @@ import {
   ButtonContainer,
   CustomSelect,
   FormGroup,
-  Header,
   PageContainer,
+  ScannerWrapper,
   StyledButton,
   StyledForm,
   StyledLabel,
@@ -48,7 +48,7 @@ function QrScannerPage() {
   const handleScan = (data) => {
     if (data) {
       const scannedTeamName = data.text;
-      if(scannedTeamName==="CLEAR"){
+      if (scannedTeamName === "CLEAR") {
         window.location.reload();
       }
       console.log(scannedTeamName);
@@ -57,7 +57,7 @@ function QrScannerPage() {
         if (!teamObject.id) {
           setNewTeam({ id: 101, name: "INVALIDQR" });
         } else {
-          setNewTeam({ id: teamObject.id-1, name: teamObject.name });
+          setNewTeam({ id: teamObject.id - 1, name: teamObject.name });
         }
       } catch (err) {
         setNewTeam({ id: 101, name: "INVALIDQR" });
@@ -110,13 +110,14 @@ function QrScannerPage() {
   const handleAns4Change = handleChangeFactory(answer[3]);
   return (
     <div>
-      
       <PageContainer>
-        <QrScanner
-          style={previewStyle}
-          onError={handleError}
-          onScan={handleScan}
-        />
+        <ScannerWrapper>
+          <QrScanner
+            style={previewStyle}
+            onError={handleError}
+            onScan={handleScan}
+          />
+        </ScannerWrapper>
 
         <TeamName>
           {team.name === "NOQR"
@@ -141,22 +142,37 @@ function QrScannerPage() {
         <input type={"hidden"} value={team.id} name={"team"} />
         <FormGroup>
           <StyledLabel>Problema:</StyledLabel>
-          <CustomSelect onChange={handleProblemChange} options={problemOptions} />
+          <CustomSelect
+            onChange={handleProblemChange}
+            options={problemOptions}
+          />
         </FormGroup>
         <FormGroup>
           <StyledLabel>Raspuns:</StyledLabel>
           <AnswerArange>
             <AnswerContainer>
-              <CustomSelect onChange={handleAns1Change} options={digitOptions} />
+              <CustomSelect
+                onChange={handleAns1Change}
+                options={digitOptions}
+              />
             </AnswerContainer>
             <AnswerContainer>
-              <CustomSelect onChange={handleAns2Change} options={digitOptions} />
+              <CustomSelect
+                onChange={handleAns2Change}
+                options={digitOptions}
+              />
             </AnswerContainer>
             <AnswerContainer>
-              <CustomSelect onChange={handleAns3Change} options={digitOptions} />
+              <CustomSelect
+                onChange={handleAns3Change}
+                options={digitOptions}
+              />
             </AnswerContainer>
             <AnswerContainer>
-              <CustomSelect onChange={handleAns4Change} options={digitOptions} />
+              <CustomSelect
+                onChange={handleAns4Change}
+                options={digitOptions}
+              />
             </AnswerContainer>
           </AnswerArange>
         </FormGroup>
