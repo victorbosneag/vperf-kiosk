@@ -15,7 +15,6 @@ import Select from "react-dropdown-select";
 import { digitOptions, problemOptions } from "./QRScanner.config";
 import { submitAnswer } from "../api/submitAnswer.api";
 import { useNavigate } from "react-router-dom";
-import UIfx from "uifx";
 import beepFx from "./../beep_fx.mp3";
 
 function QrScannerPage() {
@@ -28,6 +27,7 @@ function QrScannerPage() {
     if (!password) {
       navigate("/config");
     }
+    // eslint-disable-next-line
   }, []);
   const previewStyle = {
     height: 240,
