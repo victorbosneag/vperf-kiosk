@@ -17,6 +17,7 @@ import { digitOptions, problemOptions } from "./QRScanner.config";
 import { submitAnswer } from "../api/submitAnswer.api";
 import { useNavigate } from "react-router-dom";
 import beepFx from "./../beep_fx.mp3";
+import { IMAGE_URL } from "../config";
 
 function QrScannerPage() {
   //const beep = new UIfx({asset: beepFx})
@@ -110,7 +111,7 @@ function QrScannerPage() {
   const handleAns4Change = handleChangeFactory(answer[3]);
   return (
     <div>
-      <PageContainer>
+      <PageContainer imageUrl={IMAGE_URL}>
         <ScannerWrapper>
           <QrScanner
             style={previewStyle}

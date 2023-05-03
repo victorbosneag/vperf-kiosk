@@ -9,7 +9,7 @@ export const PageContainer = styled.div`
   //height: calc(100vh - 80px);
   height: 100vh;
   width: 100%;
-  background-image: url("http://localhost:3000/wall.png");
+  background-image: url(${(props) => (props.imageUrl)});
 `;
 
 export const Header = styled.nav`
