@@ -1,6 +1,9 @@
 import Select from "react-dropdown-select";
 import styled from "styled-components";
 
+export const BackgroundContainer = styled.div`
+  background-image: url(${(props) => (props.imageUrl)});
+`;
 export const PageContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -9,13 +12,11 @@ export const PageContainer = styled.div`
   //height: calc(100vh - 80px);
   height: 100vh;
   width: 100%;
-  background-image: url(${(props) => (props.imageUrl)});
 `;
 
-export const Header = styled.nav`
-  width: 100%;
-  height: 80px;
-  background-color: lightblue;
+export const Header = styled.div  `
+  
+  
   display: flex;
   flex-direction: column;
 `;

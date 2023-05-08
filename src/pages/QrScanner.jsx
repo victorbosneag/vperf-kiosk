@@ -3,9 +3,11 @@ import QrScanner from "react-qr-scanner";
 import {
   AnswerArange,
   AnswerContainer,
+  BackgroundContainer,
   ButtonContainer,
   CustomSelect,
   FormGroup,
+  Header,
   PageContainer,
   ScannerWrapper,
   StyledButton,
@@ -17,7 +19,7 @@ import { digitOptions, problemOptions } from "./QRScanner.config";
 import { submitAnswer } from "../api/submitAnswer.api";
 import { useNavigate } from "react-router-dom";
 import beepFx from "./../beep_fx.mp3";
-import { IMAGE_URL } from "../config";
+import { IMAGE_URL, LOGO_URL } from "../config";
 
 function QrScannerPage() {
   //const beep = new UIfx({asset: beepFx})
@@ -111,25 +113,31 @@ function QrScannerPage() {
   const handleAns4Change = handleChangeFactory(answer[3]);
   return (
     <div>
-      <PageContainer imageUrl={IMAGE_URL}>
-        <ScannerWrapper>
-          <QrScanner
-            style={previewStyle}
-            onError={handleError}
-            onScan={handleScan}
-          />
-        </ScannerWrapper>
+      <BackgroundContainer imageUrl={IMAGE_URL}>
+        <Header>
+          <div><img src={LOGO_URL} alt="" height="80"/></div>
+          
+        </Header>
+        <PageContainer>
+          <ScannerWrapper>
+            <QrScanner
+              style={previewStyle}
+              onError={handleError}
+              onScan={handleScan}
+            />
+          </ScannerWrapper>
 
-        <TeamName>
-          {team.name === "NOQR"
-            ? "Niciun QR scanat"
-            : team.name === "INVALIDQR"
-            ? "QR invalid! Incercati din nou"
-            : team.name}
-        </TeamName>
+          <TeamName>
+            {team.name === "NOQR"
+              ? "Niciun QR scanat"
+              : team.name === "INVALIDQR"
+              ? "QR invalid! Incercati din nou"
+              : team.name}
+          </TeamName>
 
-        <PageData team={team} />
-      </PageContainer>
+          <PageData team={team} />
+        </PageContainer>
+      </BackgroundContainer>
     </div>
   );
 
