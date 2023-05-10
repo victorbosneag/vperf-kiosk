@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const BackgroundContainer = styled.div`
   background-image: url(${(props) => (props.imageUrl)});
+  height: 100vh;
 `;
 export const PageContainer = styled.div`
   display: flex;
@@ -10,7 +11,7 @@ export const PageContainer = styled.div`
   align-items: center;
   flex-direction: column;
   //height: calc(100vh - 80px);
-  height: 100vh;
+  height: 100%
   width: 100%;
 `;
 
