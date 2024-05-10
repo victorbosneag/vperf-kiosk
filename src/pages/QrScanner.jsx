@@ -23,7 +23,7 @@ import { IMAGE_URL, LOGO_URL, TESTING_MODE } from "../config";
 function QrScannerPage() {
 
   let audioFileNames = []
-  function importAll(r) {
+  function importAllAudio(r) {
     let audio = {};
     r.keys().map((item, index) => {
       audio[item.replace('./', '')] = r(item);
@@ -31,24 +31,47 @@ function QrScannerPage() {
     });
     return audio;
   }
-  const audioFiles = importAll(require.context('./../audio', false, /\.(mp3)$/));
+  let effectFileNames = []
+  function importAllEffect(r) {
+    let audio = {};
+    r.keys().map((item, index) => {
+      audio[item.replace('./', '')] = r(item);
+      effectFileNames.push(item.replace('./', ''))
+    });
+    return audio;
+  }
+  const audioFiles = importAllAudio(require.context('./../audio', false, /\.(mp3)$/));
+  const effectFiles = importAllEffect(require.context('./../effects', false, /\.(mp3)$/));
 
   let audio = []
   audioFileNames.forEach((audioFileName, index) => {
     audio[index] = new Audio(audioFiles[audioFileName])
   })
 
+  let effect = []
+  effectFileNames.forEach((effectFileName, index) => {
+    effect[index] = new Audio(effectFiles[effectFileName])
+  })
+  console.log(effectFileNames)
   const navigate = useNavigate();
   useEffect(() => {
     audio.forEach((audioElement) => {
+      audioElement.load()
+    })
+    effect.forEach((audioElement) => {
       audioElement.load()
     })
     const password = localStorage.getItem("pass");
     if (!password && !TESTING_MODE) {
       navigate("/config");
     }
+    setInterval(function(){
+      effect[Math.floor(Math.random() * (effect.length - 1))].play();
+    }, 1000*60*10)
     // eslint-disable-next-line
   }, []);
+  //Math.floor(Math.random() * (effect.length - 1))
+
   const previewStyle = {
     height: 240,
     width: 320,
