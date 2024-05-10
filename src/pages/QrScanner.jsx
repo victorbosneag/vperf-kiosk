@@ -18,15 +18,31 @@ import {
 import { digitOptions, problemOptions } from "./QRScanner.config";
 import { submitAnswer } from "../api/submitAnswer.api";
 import { useNavigate } from "react-router-dom";
-import beepFx from "./../beep_fx.mp3";
 import { IMAGE_URL, LOGO_URL, TESTING_MODE } from "../config";
 
 function QrScannerPage() {
-  //const beep = new UIfx({asset: beepFx})
-  const beep = new Audio(beepFx);
+
+  let audioFileNames = []
+  function importAll(r) {
+    let audio = {};
+    r.keys().map((item, index) => {
+      audio[item.replace('./', '')] = r(item);
+      audioFileNames.push(item.replace('./', ''))
+    });
+    return audio;
+  }
+  const audioFiles = importAll(require.context('./../audio', false, /\.(mp3)$/));
+
+  let audio = []
+  audioFileNames.forEach((audioFileName, index) => {
+    audio[index] = new Audio(audioFiles[audioFileName])
+  })
+
   const navigate = useNavigate();
   useEffect(() => {
-    beep.load();
+    audio.forEach((audioElement) => {
+      audioElement.load()
+    })
     const password = localStorage.getItem("pass");
     if (!password && !TESTING_MODE) {
       navigate("/config");
@@ -43,7 +59,7 @@ function QrScannerPage() {
   const setNewTeam = (teamName) => {
     if (teamName.id !== team.id) {
       setTeam(teamName);
-      beep.play();
+      audio[Math.floor(Math.random() * (audio.length - 1))].play();
       console.log([teamName, team]);
     }
   };
@@ -115,7 +131,7 @@ function QrScannerPage() {
     <div>
       <BackgroundContainer imageUrl={IMAGE_URL}>
         <Header>
-          <div><img src={LOGO_URL} alt="" height="80"/></div>
+          <div><img src={LOGO_URL} alt="" height="200"/></div>
           
         </Header>
         <PageContainer>
