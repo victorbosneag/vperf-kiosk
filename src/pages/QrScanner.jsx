@@ -19,7 +19,7 @@ import { digitOptions, problemOptions } from "./QRScanner.config";
 import { submitAnswer } from "../api/submitAnswer.api";
 import { useNavigate } from "react-router-dom";
 import beepFx from "./../beep_fx.mp3";
-import { IMAGE_URL, LOGO_URL } from "../config";
+import { IMAGE_URL, LOGO_URL, TESTING_MODE } from "../config";
 
 function QrScannerPage() {
   //const beep = new UIfx({asset: beepFx})
@@ -28,7 +28,7 @@ function QrScannerPage() {
   useEffect(() => {
     beep.load();
     const password = localStorage.getItem("pass");
-    if (!password) {
+    if (!password && !TESTING_MODE) {
       navigate("/config");
     }
     // eslint-disable-next-line
