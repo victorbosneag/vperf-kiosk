@@ -15,10 +15,10 @@ export const PageContainer = styled.div`
   width: 100%;
 `;
 
-export const Header = styled.div  `
-  
-  
+export const Header = styled.div`
   display: flex;
+  align-items: center;
+  padding-top: 20px;
   flex-direction: column;
 `;
 
