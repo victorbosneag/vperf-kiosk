@@ -18,7 +18,7 @@ import {
 import { digitOptions, problemOptions } from "./QRScanner.config";
 import { submitAnswer } from "../api/submitAnswer.api";
 import { useNavigate } from "react-router-dom";
-import { IMAGE_URL, LOGO_URL, TESTING_MODE } from "../config";
+import {EFFECT_INTERVAL, IMAGE_URL, LOGO_URL, TESTING_MODE} from "../config";
 
 function QrScannerPage() {
 
@@ -67,7 +67,7 @@ function QrScannerPage() {
     }
     setInterval(function(){
       effect[Math.floor(Math.random() * (effect.length - 1))].play();
-    }, 1000*60*10)
+    }, 1000*60*EFFECT_INTERVAL)
     // eslint-disable-next-line
   }, []);
   //Math.floor(Math.random() * (effect.length - 1))
