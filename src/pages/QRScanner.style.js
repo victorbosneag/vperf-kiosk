@@ -11,15 +11,15 @@ export const PageContainer = styled.div`
   align-items: center;
   flex-direction: column;
   //height: calc(100vh - 80px);
-  height: 100%
   width: 100%;
 `;
 
 export const Header = styled.div`
   display: flex;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 50px;
   flex-direction: column;
+  margin-bottom: 80px;
 `;
 
 export const StyledForm = styled.form`
@@ -83,7 +83,7 @@ export const ScannerContainer = styled.div`
 `;
 
 export const TeamName = styled.h1`
-  color: #ffa500;
+  color: #ffe81f;
 `;
 
 export const CustomSelect = styled(Select)`
@@ -91,6 +91,6 @@ export const CustomSelect = styled(Select)`
 `;
 
 export const ScannerWrapper = styled.div`
-  border-radius: 15px;
+  border-radius: 500px;
   overflow: hidden;
 `;
