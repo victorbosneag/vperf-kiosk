@@ -65,9 +65,11 @@ function QrScannerPage() {
     if (!password && !TESTING_MODE) {
       navigate("/config");
     }
+    /*
     setInterval(function(){
       effect[Math.floor(Math.random() * (effect.length - 1))].play();
     }, 1000*60*EFFECT_INTERVAL)
+    */
     // eslint-disable-next-line
   }, []);
   //Math.floor(Math.random() * (effect.length - 1))
